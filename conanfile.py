@@ -23,11 +23,6 @@ class SbcConan(ConanFile):
         os.rename(self.name + "-" + self.version, self.source_subfolder)
 
     def build(self):
-        #with tools.chdir(self.source_subfolder):
-        #    self.run('./configure --prefix %s/build --libdir %s/build/lib --disable-maintainer-mode'
-        #    ' --disable-silent-rules --enable-introspection --disable-tester --disable-tools'%(os.getcwd(),os.getcwd()))
-        #    self.run('make -j4')
-        #    self.run('make install')
         with tools.chdir(self.source_subfolder):
             _args = ["--prefix=%s/builddir"%(os.getcwd()), "--disable-tester", "--disable-tools", "--disable-silent-rules"]
             if self.options.shared:
